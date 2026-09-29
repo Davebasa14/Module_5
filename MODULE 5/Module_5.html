@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Edit Product Information</title>
+    <!-- Connects this HTML webpage to the external stylesheet (Module_5.css) for fonts, colors, and layout rules -->
+    <link rel="stylesheet" href="Module_5.css">
+</head>
+<body>
+    <!-- UPPER RIGHT LOGO: Displays the SneakerPapi brand image at the top right of the page -->
+    <img src="Logo.png" alt="SneakerPapi Logo" class="top-logo">
+
+    <!-- MAIN PAGE HEADER: The primary title informing the user of the page's purpose -->
+    <h1>Edit Product Information</h1>
+    
+    <!-- SECTION 1: SEARCH FORM -->
+    <!-- Allows the user to type in a product code (SKU) to look up existing item details from system storage -->
+    <h2>1. Search Product to Edit</h2>
+    <form id="searchForm">
+        <p>
+            <label for="searchCode">Target Product Code (SKU):</label><br>
+            <!-- Text box where the user types the SKU to search for -->
+            <input type="text" id="searchCode" required placeholder="SHOE-NIKE-42-BLK">
+            <!-- Button that submits the search query to fetch item details -->
+            <button type="submit">Fetch Product Details</button>
+        </p>
+    </form>
+
+    <hr>
+
+    <!-- SECTION 2: EDIT FORM -->
+    <!-- Input form that gets populated with existing product data so the user can modify and save changes -->
+    <h2>2. Edit Product Information Form</h2>
+    <form id="editForm">
+        <p>
+            <label for="editCode">Product Code (SKU - Read Only):</label><br>
+            <!-- Displays the SKU being edited; locked (readonly) so the unique identifier cannot be changed -->
+            <input type="text" id="editCode" readonly placeholder="Load a product first...">
+        </p>
+        <p>
+            <label for="editName">Product Name:</label><br>
+            <!-- Input field to edit the display name of the sneaker or product -->
+            <input type="text" id="editName" placeholder="Product Name">
+        </p>
+        <p>
+            <label for="editSize">Size:</label><br>
+            <!-- Input field to edit the shoe or product size -->
+            <input type="text" id="editSize" placeholder="Size">
+        </p>
+        <p>
+            <label for="editColor">Color Label:</label><br>
+            <!-- Input field to edit the product color description -->
+            <input type="text" id="editColor" placeholder="Color">
+        </p>
+        <p>
+            <label for="editPrice">Base Price (₱):</label><br>
+            <!-- Number input field to edit product price in Pesos (supports decimal values) -->
+            <input type="number" id="editPrice" step="0.01" placeholder="Base Price">
+        </p>
+        <p>
+            <label for="editAuthenticity">Authenticity Flag:</label><br>
+            <!-- Dropdown menu to select whether the product is Original or Class A -->
+            <select id="editAuthenticity">
+                <option value="Authentic">Authentic / Original</option>
+                <option value="Class A">Class A</option>
+            </select>
+        </p>
+        <!-- Submit button to save changes; initially turned off (disabled) until a valid product is loaded -->
+        <button type="submit" id="updateBtn" disabled>Update Product Information</button>
+    </form>
+
+    <hr>
+
+    <!-- SECTION 3: STATUS & EXECUTION LOG -->
+    <!-- Displays real-time message feedback and confirmation cards after edit operations take place -->
+    <h2>3. Output & Execution Log</h2>
+    <div id="outputContainer">
+        <p><em>No update operations performed yet.</em></p>
+    </div>
+
+    <hr>
+
+    <!-- SECTION 4: LIVE PRODUCT DIRECTORY -->
+    <!-- Data table listing all products currently stored in the system's global hash map memory -->
+    <h2>4. Live Product Directory (Global Product Hash Map)</h2>
+    <table border="1" cellpadding="5" id="productTable">
+        <thead>
+            <tr>
+                <th>Product ID</th>
+                <th>Product Code (SKU)</th>
+                <th>Product Name</th>
+                <th>Size</th>
+                <th>Color</th>
+                <th>Base Price</th>
+                <th>Authenticity</th>
+            </tr>
+        </thead>
+        <!-- Empty body filled dynamically with product rows by Module_5.js -->
+        <tbody id="productTableBody">
+            <!-- Rendered dynamically -->
+        </tbody>
+    </table>
+
+    <script src="Module_5.js"></script>
+
+</body>
+</html>

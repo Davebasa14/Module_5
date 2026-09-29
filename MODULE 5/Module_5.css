@@ -1,0 +1,355 @@
+/* ============================================================
+   SneakerPapi — Module 9: Edit Product Information
+   Basic stylesheet. No frameworks, no libraries — plain CSS.
+   Keep SneakerPapi_Template.png in the same folder as this file.
+   ============================================================ */
+
+/* IMPORTS CUSTOM FONTS: Downloads the 'Barlow' and 'Barlow Condensed' font styles from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600&display=swap');
+
+/* GLOBAL BRAND VARIABLES: Stores reusable color values used throughout the entire webpage */
+:root {
+    --sp-red: #E8202A;     
+    --sp-red-dark: #B3141C;  
+    --sp-black: #000000;    
+    --sp-ink: #202020;     
+    --sp-paper: #F4F3F1;   
+    --sp-line: #D8D6D2;      
+    --sp-muted: #8C8880;   
+}
+
+/* BOX-SIZING RESET: Forces padding and borders to stay inside element dimensions to prevent overflow */
+* {
+    box-sizing: border-box;
+}
+
+/* ---------- Page background: the SneakerPapi template ---------- */
+
+/* MAIN BODY STYLING: Sets default fonts, page padding, and sets the background wallpaper image */
+body {
+    margin: 0;
+    padding: 60px 20px;
+    min-height: 100vh;
+    font-family: 'Barlow', Arial, sans-serif;
+    color: var(--sp-ink);
+    background-color: var(--sp-paper);
+    background-image: url('SneakerPapi_Template.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    position: relative; /* Context for absolute positioning of children like the top logo */
+}
+
+/* ---------- Upper Right Logo ---------- */
+
+/* LOGO POSITIONING: Locks the SneakerPapi logo in the top-right corner over the background graphics */
+.top-logo {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    max-height: 120px;
+    width: auto;
+    object-fit: contain;
+    z-index: 100;
+}
+
+/* CONTENT CONTAINER WIDTH: Keeps main content blocks centered and limited to 1000 pixels wide */
+h1, h2, form, #outputContainer, #productTable, hr {
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ---------- Headings ---------- */
+
+/* MAIN HEADING (H1): Styles the main top banner with white background, red left bar, and black shadow */
+h1 {
+    font-family: 'Barlow Condensed', Arial, sans-serif;
+    font-size: 40px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: var(--sp-black);
+    margin: 0 0 30px;
+    padding: 14px 22px;
+    background: #FFFFFF;
+    border-left: 10px solid var(--sp-red);
+    box-shadow: 0 2px 0 var(--sp-black);
+}
+
+/* SECTION HEADINGS (H2): Creates black banners with an angled right-side cut for section titles */
+h2 {
+    font-family: 'Barlow Condensed', Arial, sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin: 30px auto 0;
+    padding: 10px 22px;
+    background: var(--sp-black);
+    /* angled cut echoing the template's diagonal stripes */
+    clip-path: polygon(0 0, 100% 0, calc(100% - 22px) 100%, 0 100%);
+}
+
+/* SUB-HEADINGS (H3): Styles smaller dark red titles inside feedback containers */
+h3 {
+    font-family: 'Barlow Condensed', Arial, sans-serif;
+    font-size: 20px;
+    color: var(--sp-red-dark);
+    margin: 0 0 10px;
+}
+
+/* SECTION DIVIDER (HR): Draws a subtle horizontal line separating different sections */
+hr {
+    border: none;
+    border-top: 2px solid var(--sp-line);
+    margin-top: 34px;
+    margin-bottom: 0;
+}
+
+/* ---------- Shared panel treatment ---------- */
+
+/* PANEL CARDS: Styles forms, log containers, and tables as white card panels with red top borders */
+form,
+#outputContainer,
+#productTable {
+    background: rgba(255, 255, 255, 0.94);
+    border: 1px solid var(--sp-line);
+    border-top: 4px solid var(--sp-red);
+    margin-top: 0;
+    margin-bottom: 26px;
+}
+
+form,
+#outputContainer {
+    padding: 24px 26px;
+}
+
+form p {
+    margin: 0 0 16px;
+}
+
+form p:last-of-type {
+    margin-bottom: 20px;
+}
+
+/* FORM LABELS: Styles field title labels above inputs with bold black text */
+label {
+    display: inline-block;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--sp-black);
+    margin-bottom: 6px;
+}
+
+/* INPUT & SELECT FIELDS: Formats text boxes and dropdowns with clean borders and padding */
+input,
+select {
+    width: 100%;
+    padding: 10px 12px;
+    font-family: inherit;
+    font-size: 15px;
+    color: var(--sp-ink);
+    background: #FFFFFF;
+    border: 1px solid var(--sp-line);
+    border-radius: 0;
+}
+
+/* INPUT FOCUS STATE: Adds a red border and red underline highlight when a user clicks into an input field */
+input:focus,
+select:focus {
+    outline: none;
+    border-color: var(--sp-red);
+    box-shadow: inset 0 -2px 0 var(--sp-red);
+}
+
+/* PLACEHOLDER TEXT: Sets a soft gray color for hint text inside input boxes */
+input::placeholder {
+    color: #A9A6A2;
+}
+
+/* READ-ONLY INPUTS: Visually locks read-only text inputs with gray background and dashed border */
+input[readonly] {
+    background: #EDEBE8;
+    color: var(--sp-muted);
+    border-style: dashed;
+    cursor: not-allowed;
+}
+
+/* ---------- Search row: input + button side by side ---------- */
+
+/* SEARCH BAR LAYOUT: Places search text box and search button side-by-side using flexible flexbox */
+#searchForm p {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 0;
+}
+
+#searchForm label {
+    flex: 1 0 100%;
+    margin-bottom: 0;
+}
+
+#searchForm input {
+    flex: 1 1 260px;
+    width: auto;
+}
+
+#searchForm br {
+    display: none;
+}
+
+/* ---------- Buttons ---------- */
+
+/* DEFAULT ACTION BUTTONS: Creates red angled buttons with white condensed typography */
+button {
+    font-family: 'Barlow Condensed', Arial, sans-serif;
+    font-size: 19px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: #FFFFFF;
+    background: var(--sp-red);
+    border: none;
+    padding: 12px 30px;
+    cursor: pointer;
+    white-space: nowrap;
+    clip-path: polygon(0 0, 100% 0, calc(100% - 14px) 100%, 0 100%);
+}
+
+/* BUTTON HOVER: Turns red buttons to black when hovered over with a mouse pointer */
+button:hover:not(:disabled) {
+    background: var(--sp-black);
+}
+
+/* BUTTON KEYBOARD FOCUS: Draws a clear outline around active buttons for accessibility */
+button:focus-visible {
+    outline: 3px solid var(--sp-black);
+    outline-offset: 3px;
+}
+
+/* DISABLED BUTTON: Turns disabled buttons gray and disables pointer clicks */
+button:disabled {
+    background: #C9C6C1;
+    color: #F4F3F1;
+    cursor: not-allowed;
+}
+
+/* ---------- Output & execution log ---------- */
+
+/* LOG CONTAINER PARAGRAPHS: Formats text paragraphs inside the execution log area */
+#outputContainer p {
+    margin: 0 0 12px;
+    font-size: 15px;
+}
+
+#outputContainer p em {
+    color: var(--sp-muted);
+}
+
+#outputContainer p strong {
+    color: var(--sp-red-dark);
+}
+
+/* LOG CONTAINER LISTS: Formats bulleted lists inside the log area with red accent borders */
+#outputContainer ul {
+    margin: 0 0 24px;
+    padding-left: 20px;
+}
+
+#outputContainer li {
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 6px;
+    padding-left: 6px;
+    border-left: 3px solid var(--sp-red);
+}
+
+/* ---------- Tables (update card + live directory) ---------- */
+
+/* TABLE BASE STYLING: Makes tables span full width with clean border alignments */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+/* TABLE HEADER CELLS: Styles table column titles with dark black background and bold text */
+th {
+    font-family: 'Barlow Condensed', Arial, sans-serif;
+    font-size: 17px;
+    text-align: left;
+    color: #FFFFFF;
+    background: var(--sp-black);
+    padding: 9px 12px;
+}
+
+/* TABLE DATA CELLS: Adds padding and subtle light borders around every data cell */
+td {
+    padding: 9px 12px;
+    border: 1px solid var(--sp-line);
+}
+
+/* ZEBRA STRIPING: Applies a subtle tint to alternating even rows for easier reading */
+tbody tr:nth-child(even) td {
+    background: #FAFAF9;
+}
+
+td strong {
+    color: var(--sp-black);
+}
+
+/* SUMMARY CARD COLUMN 1: Gives the left attribute column of summary tables fixed width and bold font */
+#outputContainer td:first-child {
+    font-weight: 600;
+    width: 38%;
+    color: var(--sp-black);
+}
+
+/* LIVE PRODUCT DIRECTORY TABLE: Ensures standard table layout and thick top border */
+#productTable {
+    display: table;
+    border-top-width: 4px;
+}
+
+/* ROW HOVER EFFECT: Highlights table rows with a light pinkish red tint on hover */
+#productTableBody tr:hover td {
+    background: #FDECED;
+}
+
+/* ---------- Small screens ---------- */
+
+/* MOBILE RESPONSIVE ADAPTATIONS: Adjusts layout spacing, logo sizes, and tables for screens under 720px */
+@media (max-width: 720px) {
+    body {
+        padding: 24px 12px;
+        background-attachment: scroll;
+    }
+
+    .top-logo {
+        max-height: 75px;
+        top: 10px;
+        right: 12px;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    form,
+    #outputContainer {
+        padding: 18px 16px;
+    }
+
+    #searchForm input,
+    #searchForm button {
+        flex: 1 0 100%;
+    }
+
+    /* Enables horizontal scrolling on mobile screens so wide tables don't break layout */
+    #productTable {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+}
